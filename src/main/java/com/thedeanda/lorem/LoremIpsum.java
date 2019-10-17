@@ -38,8 +38,8 @@ public class LoremIpsum implements Lorem {
 	 * this command was useful:
 	 * 
 	 * cat lorem.txt | sed -e 's/[,;.]//g' | sed -e 's/ /\n/g' | sed -e \
-	 * 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' | sort | \
-	 * uniq > lorem.txt.2
+	 * 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' | sort | \ uniq >
+	 * lorem.txt.2
 	 */
 	private static LoremIpsum instance;
 
@@ -54,10 +54,8 @@ public class LoremIpsum implements Lorem {
 	private List<String> cities;
 	private List<String> countries;
 
-	private String[] URL_HOSTS = new String[] { "https://www.google.com/#q=%s",
-			"http://www.bing.com/search?q=%s",
-			"https://search.yahoo.com/search?p=%s",
-			"https://duckduckgo.com/?q=%s" };
+	private String[] URL_HOSTS = new String[] { "https://www.google.com/#q=%s", "http://www.bing.com/search?q=%s",
+			"https://search.yahoo.com/search?p=%s", "https://duckduckgo.com/?q=%s" };
 
 	public static LoremIpsum getInstance() {
 		if (instance == null) {
@@ -98,8 +96,7 @@ public class LoremIpsum implements Lorem {
 		List<String> ret = new ArrayList<String>();
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new InputStreamReader(getClass()
-					.getResourceAsStream(file), "UTF-8"));
+			br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(file), "UTF-8"));
 			String line;
 			while ((line = br.readLine()) != null) {
 				ret.add(line.trim());
@@ -123,7 +120,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getCity()
 	 */
-	@Override
+
 	public String getCity() {
 		return getRandom(cities);
 	}
@@ -133,7 +130,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getCountry()
 	 */
-	@Override
+
 	public String getCountry() {
 		return getRandom(countries);
 	}
@@ -143,7 +140,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getEmail()
 	 */
-	@Override
+
 	public String getEmail() {
 		StringBuilder sb = new StringBuilder();
 
@@ -160,7 +157,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getFirstName()
 	 */
-	@Override
+
 	public String getFirstName() {
 		return getRandom(firstNames);
 	}
@@ -170,7 +167,6 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getFirstNameMale()
 	 */
-	@Override
 	public String getFirstNameMale() {
 		return getRandom(maleNames);
 	}
@@ -180,7 +176,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getFirstNameFemale()
 	 */
-	@Override
+
 	public String getFirstNameFemale() {
 		return getRandom(femaleNames);
 	}
@@ -190,7 +186,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getLastName()
 	 */
-	@Override
+	
 	public String getLastName() {
 		return getRandom(surnames);
 	}
@@ -200,7 +196,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getName()
 	 */
-	@Override
+	
 	public String getName() {
 		return getFirstName() + " " + getLastName();
 	}
@@ -210,7 +206,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getNameMale()
 	 */
-	@Override
+	
 	public String getNameMale() {
 		return getFirstNameMale() + " " + getLastName();
 	}
@@ -220,7 +216,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getNameFemale()
 	 */
-	@Override
+	
 	public String getNameFemale() {
 		return getFirstNameFemale() + " " + getLastName();
 	}
@@ -230,7 +226,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getTitle(int)
 	 */
-	@Override
+	
 	public String getTitle(int count) {
 		return getWords(count, count, true);
 	}
@@ -240,7 +236,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getTitle(int, int)
 	 */
-	@Override
+	
 	public String getTitle(int min, int max) {
 		return getWords(min, max, true);
 	}
@@ -259,7 +255,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getHtmlParagraphs(int, int)
 	 */
-	@Override
+	
 	public String getHtmlParagraphs(int min, int max) {
 		int count = getCount(min, max);
 		StringBuilder sb = new StringBuilder();
@@ -276,7 +272,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getParagraphs(int, int)
 	 */
-	@Override
+	
 	public String getParagraphs(int min, int max) {
 		int count = getCount(min, max);
 		StringBuilder sb = new StringBuilder();
@@ -284,8 +280,7 @@ public class LoremIpsum implements Lorem {
 			int sentences = random.nextInt(5) + 2; // 2 to 6
 			for (int i = 0; i < sentences; i++) {
 				String first = getWords(1, 1, false);
-				first = first.substring(0, 1).toUpperCase()
-						+ first.substring(1);
+				first = first.substring(0, 1).toUpperCase() + first.substring(1);
 				sb.append(first);
 
 				sb.append(getWords(2, 20, false));
@@ -301,7 +296,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getUrl()
 	 */
-	@Override
+	
 	public String getUrl() {
 		StringBuilder sb = new StringBuilder();
 		int hostId = random.nextInt(URL_HOSTS.length);
@@ -320,7 +315,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getWords(int)
 	 */
-	@Override
+	
 	public String getWords(int count) {
 		return getWords(count, count, false);
 	}
@@ -330,7 +325,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getWords(int, int)
 	 */
-	@Override
+	
 	public String getWords(int min, int max) {
 		return getWords(min, max, false);
 	}
@@ -343,8 +338,7 @@ public class LoremIpsum implements Lorem {
 			String word = words.get(random.nextInt(size));
 			if (title) {
 				if (wordCount == 0 || word.length() > 3) {
-					word = word.substring(0, 1).toUpperCase()
-							+ word.substring(1);
+					word = word.substring(0, 1).toUpperCase() + word.substring(1);
 				}
 			}
 			sb.append(word);
@@ -364,7 +358,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getPhone()
 	 */
-	@Override
+	
 	public String getPhone() {
 		StringBuilder sb = new StringBuilder();
 
@@ -392,7 +386,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getStateAbbr()
 	 */
-	@Override
+	
 	public String getStateAbbr() {
 		return getRandom(stateAbbr);
 	}
@@ -402,7 +396,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getStateFull()
 	 */
-	@Override
+	
 	public String getStateFull() {
 		return getRandom(stateFull);
 	}
@@ -412,7 +406,7 @@ public class LoremIpsum implements Lorem {
 	 * 
 	 * @see com.thedeanda.lorem.Lorem#getZipCode()
 	 */
-	@Override
+	
 	public String getZipCode() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < 5; i++) {
